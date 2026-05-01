@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Member Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>Member Dashboard 👤</h2>
+  <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div class="dashboard">
+
+  <!-- TASK VIEW -->
+  <div class="box">
+    <h3>Your Assigned Tasks</h3>
+    <div id="tasks">Loading tasks...</div>
+  </div>
+
+  <!-- ANALYTICS -->
+  <div class="box">
+    <h3>Dashboard Analytics</h3>
+    <button onclick="loadDashboard()">Load Stats</button>
+    <pre id="stats">Click button to load stats</pre>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+  // Load member tasks on page load
+  window.onload = function() {
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    if (typeof loadMyTasks === "function") {
+      loadMyTasks();
+    }
+  };
+</script>
+
+</body>
+</html>

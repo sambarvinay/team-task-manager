@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    .container { display: flex; gap: 20px; }
+    .box { border: 1px solid #ccc; padding: 15px; width: 300px; border-radius: 8px; }
+    input, select, button { margin: 5px 0; width: 100%; padding: 6px; }
+    .task { border: 1px solid #ddd; padding: 8px; margin-top: 5px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+<h2>Team Task Manager 🚀</h2>
+
+<div class="container">
+
+  <!-- PROJECT SECTION -->
+  <div class="box">
+    <h3>Create Project</h3>
+    <input id="projectName" placeholder="Project Name"/>
+    <button onclick="createProject()">Create</button>
+
+    <h4>Your Projects</h4>
+    <ul id="projects"></ul>
+  </div>
+
+  <!-- TASK SECTION -->
+  <div class="box">
+    <h3>Create Task</h3>
+    <input id="title" placeholder="Title"/>
+    <input id="desc" placeholder="Description"/>
+    <input id="due" type="date"/>
+    
+    <select id="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+
+    <input id="assigned" placeholder="Assign User ID"/>
+    
+    <select id="projectSelect"></select>
+
+    <button onclick="createTask()">Create Task</button>
+
+    <h3>Dashboard Stats</h3>
+    <button onclick="loadDashboard()">Load Stats</button>
+    <pre id="stats"></pre>
+
+    <h3>Add Member</h4>
+    <input id="memberUserId" placeholder="User ID"/>
+    <button onclick="addMember()">Add Member</button>
+  </div>
+
+  <!-- TASK LIST -->
+  <div class="box">
+    <h3>Tasks</h3>
+    <div id="tasks"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

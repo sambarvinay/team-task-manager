@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>Admin Dashboard 👑</h2>
+  <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div class="dashboard">
+
+  <!-- PROJECT SECTION -->
+  <div class="box">
+    <h3>Create Project</h3>
+    <input id="projectName" placeholder="Project Name"/>
+    <button onclick="createProject()">Create Project</button>
+
+    <h4>Your Projects</h4>
+    <ul id="projects"></ul>
+  </div>
+
+  <!-- TASK MANAGEMENT -->
+  <div class="box">
+    <h3>Create Task</h3>
+
+    <input id="title" placeholder="Title"/>
+    <input id="desc" placeholder="Description"/>
+    <input id="due" type="date"/>
+
+    <select id="priority">
+      <option value="low">Low Priority</option>
+      <option value="medium">Medium Priority</option>
+      <option value="high">High Priority</option>
+    </select>
+
+    <input id="assigned" placeholder="Assign User ID"/>
+    <select id="projectSelect"></select>
+
+    <button onclick="createTask()">Create Task</button>
+
+    <hr/>
+
+    <h4>Add Member</h4>
+    <input id="memberUserId" placeholder="User ID"/>
+    <button onclick="addMember()">Add Member</button>
+  </div>
+
+  <!-- ANALYTICS + TASK LIST -->
+  <div class="box">
+    <h3>Dashboard Analytics</h3>
+    <button onclick="loadDashboard()">Load Stats</button>
+    <pre id="stats">Click button to load stats</pre>
+
+    <h3>Tasks</h3>
+    <div id="tasks">Select a project to view tasks</div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+  // Load projects on page load
+  window.onload = function() {
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+
+    if (typeof loadProjects === "function") {
+      loadProjects();
+    }
+  };
+</script>
+
+</body>
+</html>

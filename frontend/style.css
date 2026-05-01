@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #333;
+}
+
+/* Center card */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #667eea;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #5a67d8;
+  transform: scale(1.02);
+}
+
+/* Links */
+.link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.link a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard layout */
+.dashboard {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.box {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Task cards */
+.task {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+/* Header */
+.header {
+  padding: 15px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.logout {
+  background: #e53e3e;
+}
+
+.logout:hover {
+  background: #c53030;
+}
