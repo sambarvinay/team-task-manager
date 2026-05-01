@@ -189,5 +189,21 @@ function logout() {
   localStorage.removeItem("token");
   window.location.href = "login.html";
 }
+
+function updateTaskStatus(taskId, status) {
+  fetch(`/api/tasks/${taskId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    },
+    body: JSON.stringify({ status })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("Status updated:", data);
+  })
+  .catch(err => console.error(err));
+}
 // INIT
 loadProjects();
