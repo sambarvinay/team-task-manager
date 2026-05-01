@@ -78,23 +78,31 @@ function createTask() {
 // LOAD TASKS
 function loadMyTasks() {
   fetch("/api/tasks/my", {
-    headers: { Authorization: token }
+    headers: { Authorization: localStorage.getItem("token") }
   })
   .then(res => res.json())
   .then(data => {
     let container = document.getElementById("tasks");
     container.innerHTML = "";
 
-    data.forEach(t => {
+    if (data.length === 0) {
+      container.innerHTML = "<p>No tasks assigned</p>";
+      return;
+    }
+
+    data.forEach(task => {
       container.innerHTML += `
-        <div>
-          <b>${t.title}</b><br/>
-          ${t.description}<br/>
-          Status: ${t.status}<br/>
-          <select onchange="updateTask(${t.id}, this.value)">
-            <option value="todo">To Do</option>
-            <option value="inprogress">In Progress</option>
-            <option value="done">Done</option>
+        <div class="task">
+          <b>${task.title}</b><br/>
+          ${task.description}<br/>
+          <small>Due: ${task.due_date || "N/A"}</small><br/>
+          <small>Priority: ${task.priority}</small><br/>
+
+          <b>Status:</b>
+          <select onchange="updateTaskStatus(${task.id}, this.value)">
+            <option value="todo" ${task.status === "todo" ? "selected" : ""}>To Do</option>
+            <option value="inprogress" ${task.status === "inprogress" ? "selected" : ""}>In Progress</option>
+            <option value="done" ${task.status === "done" ? "selected" : ""}>Done</option>
           </select>
         </div>
       `;
