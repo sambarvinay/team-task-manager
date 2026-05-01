@@ -61,12 +61,14 @@ router.put("/:id", auth, (req, res) => {
   const { status } = req.body;
 
   db.query(
-    "UPDATE tasks SET status=? WHERE id=?",
-    [status, req.params.id],
-    () => res.json("Updated")
+    "UPDATE tasks SET status=? WHERE id=? AND assigned_to=?",
+    [status, req.params.id, req.user.id],
+    (err) => {
+      if (err) return res.status(500).json(err);
+      res.json("Task updated");
+    }
   );
 });
-
 // Dashboard
 router.get("/dashboard", auth, (req, res) => {
   db.query(
